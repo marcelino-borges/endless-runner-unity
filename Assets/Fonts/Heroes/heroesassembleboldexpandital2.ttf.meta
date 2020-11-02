@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 74317f75546aa2e4e8d3f7f2961a8efc
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Heroes Assemble Bold Expandtalic
+  fontNames:
+  - Heroes Assemble Bold Expandtalic
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
