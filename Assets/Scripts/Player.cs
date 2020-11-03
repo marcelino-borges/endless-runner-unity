@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -24,6 +22,7 @@ public class Player : MonoBehaviour
             throw new MissingReferenceException("Referenciar o objeto PlayerDataUI na cena.");
 
         currentHealth = maxHealth;
+        SetHealthOnUI(currentHealth);
     }
 
     /// <summary>

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
@@ -19,7 +17,7 @@ public class Obstacle : MonoBehaviour
                 if (hitParticles != null)
                     Instantiate(hitParticles);
 
-                Destroy(gameObject);
+                gameObject.SetActive(false);
             }
         }
     }

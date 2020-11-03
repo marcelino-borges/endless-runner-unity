@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
@@ -9,14 +7,13 @@ public class PlayerController : MonoBehaviour
 
     public bool isGrounded;
 
-    public Rigidbody rb;
+    private Rigidbody rb;
     public float forwardSpeed = 5f, horizontalSpeed = 5f;
     public float jumpForce;
     public float horizontalMovement;
     public float forwardMovement;
 
-    public Transform groundCheck
-    public float groundCheckRadius = 2f;
+    public float groundCheckRayLength = .55f;
     public LayerMask whatIsGround;
 
     private void Awake()
@@ -33,9 +30,9 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        Collider[] colliders = Physics.OverlapSphere(groundCheck.position, groundCheckRadius, whatIsGround);
+        RaycastHit[] hit = Physics.RaycastAll(transform.position, Vector3.down, groundCheckRayLength, whatIsGround);        
 
-        if (colliders != null && colliders.Length > 0)
+        if (hit != null && hit.Length > 0)
             isGrounded = true;
         else
             isGrounded = false;
@@ -46,22 +43,20 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetButtonDown(JUMP_BUTTON))
         {
-            print("aaa");
             if (isGrounded)
             {
-                print("Pulou");
-                jump = 1;
+                jump = jumpForce;
             }
         }
 
         rb.AddForce(new Vector3(horizontalMovement, jump * jumpForce, forwardMovement));
-        //rb.velocity += new Vector3(horizontalMovement, direction.y, direction.z);
-        //charController.Move(new Vector3(horizontalMovement, direction.y, direction.z));
     }
 
+#if UNITY_EDITOR
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
+        Gizmos.DrawLine(transform.position, transform.position + Vector3.down * groundCheckRayLength);
     }
+#endif
 }

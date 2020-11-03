@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 
 public class PlayerDataUI : MonoBehaviour
@@ -9,11 +7,11 @@ public class PlayerDataUI : MonoBehaviour
 
     public void SetStars(int stars)
     {
-        starsTxt.text = stars.ToString();
+        starsTxt.text = stars < 10 ? ("0" + stars.ToString()) : stars.ToString();
     }
 
     public void SetHealth(int health)
     {
-        healthTxt.text = health.ToString();
+        healthTxt.text = health < 10 ? ("0" + health.ToString()) : health.ToString();
     }
 }
